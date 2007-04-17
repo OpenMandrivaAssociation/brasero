@@ -1,5 +1,5 @@
 %define name	brasero
-%define version	0.5.2
+%define version	0.5.90
 %define release %mkrel 1
 
 Name: 	 	%{name}
