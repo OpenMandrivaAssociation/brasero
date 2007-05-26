@@ -80,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %post_install_gconf_schemas %{schemas}
-%update_menu
+%update_menus
 %update_desktop_database
 %update_mime_database
 %update_icon_cache gnome
@@ -89,7 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 %preun_uninstall_gconf_schemas %{schemas}
 		
 %postun
-%clean_menu
+%clean_menus
 %clean_desktop_database
 %clean_mime_database
 %clean_icon_cache gnome
