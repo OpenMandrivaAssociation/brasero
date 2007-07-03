@@ -1,13 +1,22 @@
 %define name	brasero
-%define version	0.5.90
+%define version	0.6.0
+%define svn	245
+%if %svn
+%define release %mkrel 0.%svn.1
+%else
 %define release %mkrel 1
+%endif
 
 Name: 	 	%{name}
-Summary: 	A disc burning application for GNOME2
+Summary: 	A disc burning application for GNOME
 Version: 	%{version}
 Release: 	%{release}
 
+%if %svn
+Source:		%{name}-%{svn}.tar.bz2
+%else
 Source:		http://perso.wanadoo.fr/bonfire/%{name}-%{version}.tar.bz2
+%endif
 URL:		http://perso.wanadoo.fr/bonfire/
 License:	GPL
 Group:		Archiving/Cd burning
@@ -24,6 +33,13 @@ BuildRequires:	libgdl-devel >= 0.6
 BuildRequires:	libnotify-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:	libgstreamer0.10-plugins-base-devel
+BuildRequires:	libburn-devel
+BuildRequires:	libisofs-devel
+%if %svn
+BuildRequires:	autoconf
+BuildRequires:	gnome-common
+BuildRequires:	intltool
+%endif
 Requires:	hal >= 0.5.0
 
 Obsoletes:	bonfire
@@ -38,9 +54,16 @@ designed to be as simple as possible and has some unique features to enable
 users to create their discs easily and quickly.
 
 %prep
-%setup -q -n %{name}-%{version}
+%if %svn
+%setup -q -n %{name}
+%else
+%setup -q
+%endif
 
 %build
+%if %svn
+./autogen.sh
+%endif
 %configure2_5x --disable-schemas-install --disable-caches
 %make
 										
@@ -49,10 +72,6 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall
 
 #menu
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): command="%{name}" icon="%{name}.png" needs="x11" title="Bonfire" longtitle="GNOME-Integrated CD Burning" section="System/Archiving/CD Burning" xdg="true"
-EOF
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
@@ -60,16 +79,8 @@ desktop-file-install --vendor="" \
   --remove-category="X-GNOME-Bugzilla-Bugzilla" \
   --remove-category="X-GNOME-Bugzilla-Product" \
   --remove-category="X-GNOME-Bugzilla-Component" \
-  --add-category="X-MandrivaLinux-System-Archiving-CDBurning;DiscBurning;" \
+  --add-category="DiscBurning;" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
-
-#icons
-mkdir -p $RPM_BUILD_ROOT/%_liconsdir
-convert -size 48x48 data/logo.png $RPM_BUILD_ROOT/%_liconsdir/%name.png
-mkdir -p $RPM_BUILD_ROOT/%_iconsdir
-convert -size 32x32 data/logo.png $RPM_BUILD_ROOT/%_iconsdir/%name.png
-mkdir -p $RPM_BUILD_ROOT/%_miconsdir
-convert -size 16x16 data/logo.png $RPM_BUILD_ROOT/%_miconsdir/%name.png
 
 %find_lang %name
 
@@ -83,7 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %update_menus
 %update_desktop_database
 %update_mime_database
-%update_icon_cache gnome
+%update_icon_cache hicolor
 
 %preun
 %preun_uninstall_gconf_schemas %{schemas}
@@ -92,7 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 %clean_menus
 %clean_desktop_database
 %clean_mime_database
-%clean_icon_cache gnome
+%clean_icon_cache hicolor
 
 %files -f %{name}.lang
 %defattr(-,root,root)
@@ -102,12 +113,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/applications/*
 %{_datadir}/%name
 #%{_datadir}/pixmaps/*
-%{_datadir}/icons/hicolor/*
+%{_datadir}/icons/hicolor/*/apps/*
 %exclude %{_datadir}/icons/hicolor/icon-theme.cache
-%{_menudir}/%name
-%{_liconsdir}/%name.png
-%{_iconsdir}/%name.png
-%{_miconsdir}/%name.png
 #%{_datadir}/icons/gnome/48x48/mimetypes/gnome-mime-application-x-brasero.png
 %{_mandir}/man1/brasero.1.bz2
 %{_datadir}/mime/packages/brasero.xml
