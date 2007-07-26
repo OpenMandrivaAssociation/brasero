@@ -1,6 +1,6 @@
 %define name	brasero
 %define version	0.6.0
-%define svn	245
+%define svn	0
 %if %svn
 %define release %mkrel 0.%svn.1
 %else
@@ -15,10 +15,10 @@ Release: 	%{release}
 %if %svn
 Source:		%{name}-%{svn}.tar.bz2
 %else
-Source:		http://perso.wanadoo.fr/bonfire/%{name}-%{version}.tar.bz2
+Source:		http://ftp.gnome.org/pub/gnome/sources/brasero/0.6/%{name}-%{version}.tar.bz2
 %endif
-URL:		http://perso.wanadoo.fr/bonfire/
-License:	GPL
+URL:		http://www.gnome.org/projects/brasero/
+License:	GPLv2
 Group:		Archiving/Cd burning
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	ImageMagick
@@ -112,11 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%name
 %{_datadir}/applications/*
 %{_datadir}/%name
-#%{_datadir}/pixmaps/*
 %{_datadir}/icons/hicolor/*/apps/*
 %exclude %{_datadir}/icons/hicolor/icon-theme.cache
-#%{_datadir}/icons/gnome/48x48/mimetypes/gnome-mime-application-x-brasero.png
-%{_mandir}/man1/brasero.1.bz2
+%{_mandir}/man1/brasero.1*
 %{_datadir}/mime/packages/brasero.xml
-
-
