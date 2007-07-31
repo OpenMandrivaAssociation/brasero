@@ -13,10 +13,13 @@ Version: 	%{version}
 Release: 	%{release}
 
 %if %svn
-Source:		%{name}-%{svn}.tar.bz2
+Source0:	%{name}-%{svn}.tar.bz2
 %else
-Source:		http://ftp.gnome.org/pub/gnome/sources/brasero/0.6/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.6/%{name}-%{version}.tar.bz2
 %endif
+# Enables deprecated APIs. Needed to build Brasero 0.6.0 against GTK+
+# 2.11.6. See GNOME Bug #462185. Remove when fixed. -AdamW 2007/07
+Patch0:		brasero-0.6.0-enable_deprecated.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2
 Group:		Archiving/Cd burning
@@ -59,11 +62,14 @@ users to create their discs easily and quickly.
 %else
 %setup -q
 %endif
+%patch0 -p1 -b .deprecated
 
 %build
 %if %svn
 ./autogen.sh
 %endif
+# Needed by patch0
+automake
 %configure2_5x --disable-schemas-install --disable-caches
 %make
 										
