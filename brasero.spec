@@ -63,6 +63,9 @@ users to create their discs easily and quickly.
 %setup -q
 %endif
 %patch0 -p1 -b .deprecated
+# Seems to have changed in GLIBC 2.6...
+perl -pi -e 's,SG_FLAG_LUN_INHIBIT,SG_FLAG_UNUSED_LUN_INHIBIT,g' src/scsi/scsi-command.c
+perl -pi -e 's,SG_FLAG_LUN_INHIBIT,SG_FLAG_UNUSED_LUN_INHIBIT,g' src/scsi/scsi-sg.c
 
 %build
 %if %svn
