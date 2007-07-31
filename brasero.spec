@@ -38,6 +38,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:	libgstreamer0.10-plugins-base-devel
 BuildRequires:	libburn-devel
 BuildRequires:	libisofs-devel
+BuildRequires:	libgcrypt-devel
 %if %svn
 BuildRequires:	autoconf
 BuildRequires:	gnome-common
