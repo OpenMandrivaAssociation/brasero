@@ -4,7 +4,7 @@
 %if %svn
 %define release %mkrel 0.%svn.1
 %else
-%define release %mkrel 1
+%define release %mkrel 2
 %endif
 
 Name: 	 	%{name}
@@ -53,9 +53,11 @@ Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 
 %description
-Bonfire is yet another application to burn CD/DVD for the gnome desktop. It is
-designed to be as simple as possible and has some unique features to enable
-users to create their discs easily and quickly.
+Brasero is yet another CD / DVD writing application for the GNOME
+desktop. It is designed to be as simple as possible and has some 
+unique features to enable users to create their discs easily and 
+quickly. It can handle both audio and data discs, and can use either
+cdrkit or libburn / libisofs as the writing backend.
 
 %prep
 %if %svn
