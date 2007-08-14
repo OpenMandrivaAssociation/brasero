@@ -1,6 +1,6 @@
 %define name	brasero
-%define version	0.6.0
-%define svn	0
+%define version	0.6.1
+%define svn	282
 %if %svn
 %define release %mkrel 0.%svn.1
 %else
@@ -13,6 +13,8 @@ Version: 	%{version}
 Release: 	%{release}
 
 %if %svn
+# svn co http://svn.gnome.org/svn/brasero/branches/brasero_0_6/ brasero
+# Note use of 0.6 stable branch, not trunk!
 Source0:	%{name}-%{svn}.tar.bz2
 %else
 Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.6/%{name}-%{version}.tar.bz2
@@ -21,7 +23,7 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.6/%{name}-%{version}.t
 # 2.11.6. See GNOME Bug #462185. Remove when fixed. -AdamW 2007/07
 Patch0:		brasero-0.6.0-enable_deprecated.patch
 URL:		http://www.gnome.org/projects/brasero/
-License:	GPLv2
+License:	GPLv2+
 Group:		Archiving/Cd burning
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	ImageMagick
