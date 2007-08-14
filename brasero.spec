@@ -93,7 +93,7 @@ desktop-file-install --vendor="" \
   --remove-category="X-GNOME-Bugzilla-Bugzilla" \
   --remove-category="X-GNOME-Bugzilla-Product" \
   --remove-category="X-GNOME-Bugzilla-Component" \
-  --add-category="DiscBurning;" \
+  --add-category="DiscBurning" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 %find_lang %name
