@@ -4,7 +4,7 @@
 %if %svn
 %define release %mkrel 0.%svn.1
 %else
-%define release %mkrel 3
+%define release %mkrel 4
 %endif
 
 Name: 	 	%{name}
@@ -93,6 +93,8 @@ desktop-file-install --vendor="" \
   --remove-category="X-GNOME-Bugzilla-Bugzilla" \
   --remove-category="X-GNOME-Bugzilla-Product" \
   --remove-category="X-GNOME-Bugzilla-Component" \
+  --remove-category="AudioVideo" \
+  --add-category="Utility" \
   --add-category="DiscBurning" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
