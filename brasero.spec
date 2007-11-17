@@ -36,7 +36,7 @@ BuildRequires:	libgnome-vfs2-devel
 BuildRequires:	libnautilus-burn-devel
 BuildRequires:	libgstreamer0.10-devel
 BuildRequires:	libxml2-devel
-BuildRequires:	perl-XML-Parser
+BuildRequires:	perl(XML::Parser)
 BuildRequires:	libbeagle-devel >= 0.2.5
 BuildRequires:	totem-plparser-devel
 BuildRequires:	libgdl-devel >= 0.6
@@ -88,26 +88,24 @@ automake
 %make
 										
 %install
-rm -rf $RPM_BUILD_ROOT
-%makeinstall
+rm -rf %{buildroot}
+%makeinstall_std
 
 #menu
 
-desktop-file-install --vendor="" \
+desktop-file-install \
   --remove-category="Application" \
   --remove-category="" \
   --remove-category="X-GNOME-Bugzilla-Bugzilla" \
   --remove-category="X-GNOME-Bugzilla-Product" \
   --remove-category="X-GNOME-Bugzilla-Component" \
-  --remove-category="AudioVideo" \
-  --add-category="Utility" \
   --add-category="DiscBurning" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
+  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 %find_lang %name
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %define schemas %name
 
