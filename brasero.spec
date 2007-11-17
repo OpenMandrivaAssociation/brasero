@@ -1,10 +1,11 @@
 %define name	brasero
 %define version	0.6.1
 %define svn	0
+%define rel	7
 %if %svn
-%define release %mkrel 0.%svn.1
+%define release %mkrel 0.%svn.%rel
 %else
-%define release %mkrel 6
+%define release %mkrel %rel
 %endif
 
 Name: 	 	%{name}
