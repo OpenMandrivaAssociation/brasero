@@ -120,6 +120,5 @@ rm -rf %{buildroot}
 %{_datadir}/applications/*
 %{_datadir}/%name
 %{_datadir}/icons/hicolor/*/apps/*
-%exclude %{_datadir}/icons/hicolor/icon-theme.cache
 %{_mandir}/man1/brasero.1*
 %{_datadir}/mime/packages/brasero.xml
