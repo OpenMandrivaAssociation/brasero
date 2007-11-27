@@ -1,7 +1,7 @@
 %define name	brasero
-%define version	0.6.1
+%define version	0.6.90
 %define svn	0
-%define rel	7
+%define rel	1
 %if %svn
 %define release %mkrel 0.%svn.%rel
 %else
@@ -14,19 +14,10 @@ Version: 	%{version}
 Release: 	%{release}
 
 %if %svn
-# svn co http://svn.gnome.org/svn/brasero/branches/brasero_0_6/ brasero
-# Note use of 0.6 stable branch, not trunk!
 Source0:	%{name}-%{svn}.tar.bz2
 %else
 Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.6/%{name}-%{version}.tar.bz2
 %endif
-# Enables deprecated APIs. Needed to build Brasero 0.6.0 against GTK+
-# 2.11.6. See GNOME Bug #462185. Remove when fixed. -AdamW 2007/07
-Patch0:		brasero-0.6.0-enable_deprecated.patch
-# From upstream SVN 0.6 branch - check size by sector, not bytes.
-# Fixes burning of audio CDs / video CDs that would be larger than
-# 700MB if calculated by data size.
-Patch1:		brasero-0.6.1-sectorsize.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -72,8 +63,6 @@ cdrkit or libburn / libisofs as the writing backend.
 %else
 %setup -q
 %endif
-%patch0 -p1 -b .deprecated
-%patch1 -p1 -b .sectorsize
 # Seems to have changed in GLIBC 2.6...
 perl -pi -e 's,SG_FLAG_LUN_INHIBIT,SG_FLAG_UNUSED_LUN_INHIBIT,g' src/scsi/scsi-command.c
 perl -pi -e 's,SG_FLAG_LUN_INHIBIT,SG_FLAG_UNUSED_LUN_INHIBIT,g' src/scsi/scsi-sg.c
@@ -82,8 +71,6 @@ perl -pi -e 's,SG_FLAG_LUN_INHIBIT,SG_FLAG_UNUSED_LUN_INHIBIT,g' src/scsi/scsi-s
 %if %svn
 ./autogen.sh
 %endif
-# Needed by patch0
-automake
 %configure2_5x --disable-schemas-install --disable-caches
 %make
 										
