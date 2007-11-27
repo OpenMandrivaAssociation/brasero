@@ -116,9 +116,10 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README
 %{_sysconfdir}/gconf/schemas/%name.schemas
-%{_bindir}/%name
+%{_bindir}/%{name}
+%{_libdir}/%{name}
 %{_datadir}/applications/*
-%{_datadir}/%name
+%{_datadir}/%{name}
 %{_datadir}/icons/hicolor/*/apps/*
 %{_mandir}/man1/brasero.1*
 %{_datadir}/mime/packages/brasero.xml
