@@ -114,7 +114,7 @@ rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog MAINTAINERS NEWS README
+%doc AUTHORS MAINTAINERS NEWS README
 %{_sysconfdir}/gconf/schemas/%name.schemas
 %{_bindir}/%{name}
 %{_libdir}/%{name}
