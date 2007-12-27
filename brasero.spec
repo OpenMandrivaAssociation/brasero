@@ -1,7 +1,7 @@
 %define name	brasero
-%define version	0.6.90
+%define version	0.7.0
 %define svn	0
-%define rel	2
+%define rel	1
 %if %svn
 %define release %mkrel 0.%svn.%rel
 %else
@@ -47,13 +47,13 @@ Requires:	hal >= 0.5.0
 Obsoletes:	bonfire
 Provides:	bonfire
 
-Requires(post): desktop-file-utils 
+Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 
 %description
 Brasero is yet another CD / DVD writing application for the GNOME
-desktop. It is designed to be as simple as possible and has some 
-unique features to enable users to create their discs easily and 
+desktop. It is designed to be as simple as possible and has some
+unique features to enable users to create their discs easily and
 quickly. It can handle both audio and data discs, and can use either
 cdrkit or libburn / libisofs as the writing backend.
 
@@ -73,7 +73,7 @@ perl -pi -e 's,SG_FLAG_LUN_INHIBIT,SG_FLAG_UNUSED_LUN_INHIBIT,g' src/scsi/scsi-s
 %endif
 %configure2_5x --disable-schemas-install --disable-caches
 %make
-										
+
 %install
 rm -rf %{buildroot}
 %makeinstall_std
@@ -105,7 +105,7 @@ rm -rf %{buildroot}
 
 %preun
 %preun_uninstall_gconf_schemas %{schemas}
-		
+
 %postun
 %clean_menus
 %clean_desktop_database
