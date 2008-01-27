@@ -63,9 +63,8 @@ cdrkit or libburn / libisofs as the writing backend.
 %else
 %setup -q
 %endif
-# Seems to have changed in GLIBC 2.6...
-#perl -pi -e 's,SG_FLAG_LUN_INHIBIT,SG_FLAG_UNUSED_LUN_INHIBIT,g' src/scsi/scsi-command.c
-#perl -pi -e 's,SG_FLAG_LUN_INHIBIT,SG_FLAG_UNUSED_LUN_INHIBIT,g' src/scsi/scsi-sg.c
+# fix incorrect separator
+sed -i -e 's,:,;,g' data/brasero.desktop.in.in
 
 %build
 %if %svn
@@ -79,7 +78,6 @@ rm -rf %{buildroot}
 %makeinstall_std
 
 #menu
-
 desktop-file-install \
   --remove-category="Application" \
   --remove-category="" \
