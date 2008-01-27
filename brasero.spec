@@ -1,5 +1,5 @@
 %define name	brasero
-%define version	0.7.0
+%define version	0.7.1
 %define svn	0
 %define rel	1
 %if %svn
@@ -16,7 +16,7 @@ Release: 	%{release}
 %if %svn
 Source0:	%{name}-%{svn}.tar.bz2
 %else
-Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.6/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.7/%{name}-%{version}.tar.gz
 %endif
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
