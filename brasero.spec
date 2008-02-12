@@ -25,7 +25,7 @@ BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	ImageMagick
 BuildRequires:	libgnome-vfs2-devel
 BuildRequires:	libnautilus-burn-devel
-BuildRequires:	libgstreamer0.10-devel
+BuildRequires:	gstreamer0.10-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libbeagle-devel >= 0.2.5
