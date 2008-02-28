@@ -1,6 +1,5 @@
-%define name	brasero
-%define version	0.7.1
-%define svn	0
+%define branch	07
+%define svn	643
 %define rel	2
 %if %svn
 %define release %mkrel 0.%svn.%rel
@@ -8,13 +7,12 @@
 %define release %mkrel %rel
 %endif
 
-Name: 	 	%{name}
+Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	%{version}
+Version: 	0.7.2
 Release: 	%{release}
-
 %if %svn
-Source0:	%{name}-%{svn}.tar.bz2
+Source0:	%{name}%{branch}-%{svn}.tar.lzma
 %else
 Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.7/%{name}-%{version}.tar.gz
 %endif
@@ -59,12 +57,10 @@ cdrkit or libburn / libisofs as the writing backend.
 
 %prep
 %if %svn
-%setup -q -n %{name}
+%setup -q -n %{name}%{branch}
 %else
 %setup -q
 %endif
-# fix incorrect separator
-sed -i -e 's,:,;,g' data/brasero.desktop.in.in
 
 %build
 %if %svn
@@ -80,19 +76,15 @@ rm -rf %{buildroot}
 #menu
 desktop-file-install \
   --remove-category="Application" \
-  --remove-category="" \
-  --remove-category="X-GNOME-Bugzilla-Bugzilla" \
-  --remove-category="X-GNOME-Bugzilla-Product" \
-  --remove-category="X-GNOME-Bugzilla-Component" \
   --add-category="DiscBurning" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
-%find_lang %name
+%find_lang %{name}
 
 %clean
 rm -rf %{buildroot}
 
-%define schemas %name
+%define schemas %{name}
 
 %post
 %post_install_gconf_schemas %{schemas}
@@ -119,5 +111,6 @@ rm -rf %{buildroot}
 %{_datadir}/applications/*
 %{_datadir}/%{name}
 %{_datadir}/icons/hicolor/*/apps/*
-%{_mandir}/man1/brasero.1*
-%{_datadir}/mime/packages/brasero.xml
+%{_mandir}/man1/%{name}.1*
+%{_datadir}/mime/packages/%{name}.xml
+
