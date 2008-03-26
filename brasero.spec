@@ -1,21 +1,25 @@
 %define branch	07
-%define svn	643
-%define rel	2
+%define svn	693
+%define rel	1
 %if %svn
-%define release %mkrel 0.%svn.%rel
+%define release		%mkrel 0.%svn.%rel
+%define distname	%name%branch-%svn.tar.lzma
+%define dirname		%name%branch
 %else
-%define release %mkrel %rel
+%define release		%mkrel %rel
+%define distname	%name-%version.tar.gz
+%define dirname		%name-%version
 %endif
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
 Version: 	0.7.2
 Release: 	%{release}
-%if %svn
-Source0:	%{name}%{branch}-%{svn}.tar.lzma
-%else
-Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.7/%{name}-%{version}.tar.gz
-%endif
+# For SVN: svn co http://svn.gnome.org/svn/brasero/branches/brasero_0_7 brasero07
+Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.7/%{distname}
+# From upstream SVN head, per #39392
+Source1:	nl.po
+Patch0:		brasero-693-nl.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -56,11 +60,9 @@ quickly. It can handle both audio and data discs, and can use either
 cdrkit or libburn / libisofs as the writing backend.
 
 %prep
-%if %svn
-%setup -q -n %{name}%{branch}
-%else
-%setup -q
-%endif
+%setup -q -n %{dirname}
+%patch0 -p1 -b .nl
+install -m 0644 %{SOURCE1} po/nl.po
 
 %build
 %if %svn
