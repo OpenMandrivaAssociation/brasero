@@ -1,10 +1,9 @@
-%define branch	07
-%define svn	693
+%define svn	761
 %define rel	1
 %if %svn
 %define release		%mkrel 0.%svn.%rel
-%define distname	%name%branch-%svn.tar.lzma
-%define dirname		%name%branch
+%define distname	%name-%svn.tar.lzma
+%define dirname		%name
 %else
 %define release		%mkrel %rel
 %define distname	%name-%version.tar.gz
@@ -13,13 +12,12 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	0.7.2
+Version: 	0.7.9
 Release: 	%{release}
-# For SVN: svn co http://svn.gnome.org/svn/brasero/branches/brasero_0_7 brasero07
+# For SVN: svn co http://svn.gnome.org/svn/brasero/trunk brasero
 Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.7/%{distname}
-# From upstream SVN head, per #39392
-Source1:	nl.po
-Patch0:		brasero-693-nl.patch
+# Fix error in .desktop file - AdamW 2008/04
+Patch0:		brasero-761-desktop.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -34,10 +32,10 @@ BuildRequires:	libbeagle-devel >= 0.2.5
 BuildRequires:	totem-plparser-devel
 BuildRequires:	libgdl-devel >= 0.6
 BuildRequires:	libnotify-devel
-BuildRequires:  desktop-file-utils
+BuildRequires:	desktop-file-utils
 BuildRequires:	libgstreamer0.10-plugins-base-devel
-BuildRequires:	libburn-devel
-BuildRequires:	libisofs-devel
+#BuildRequires:	libburn-devel
+#BuildRequires:	libisofs-devel
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libusb0.1-devel
 %if %svn
@@ -62,14 +60,13 @@ cdrkit or libburn / libisofs as the writing backend.
 
 %prep
 %setup -q -n %{dirname}
-%patch0 -p1 -b .nl
-install -m 0644 %{SOURCE1} po/nl.po
+%patch0 -p1 -b .desktop
 
 %build
 %if %svn
 ./autogen.sh
 %endif
-%configure2_5x --disable-schemas-install --disable-caches
+%configure2_5x --disable-schemas-install --disable-caches --disable-libburnia
 %make
 
 %install
