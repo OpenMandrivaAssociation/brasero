@@ -1,4 +1,4 @@
-%define svn	761
+%define svn	815
 %define rel	1
 %if %svn
 %define release		%mkrel 0.%svn.%rel
@@ -34,8 +34,8 @@ BuildRequires:	libgdl-devel >= 0.6
 BuildRequires:	libnotify-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	libgstreamer0.10-plugins-base-devel
-#BuildRequires:	libburn-devel
-#BuildRequires:	libisofs-devel
+BuildRequires:	libburn-devel
+BuildRequires:	libisofs-devel
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libusb0.1-devel
 %if %svn
@@ -66,7 +66,7 @@ cdrkit or libburn / libisofs as the writing backend.
 %if %svn
 ./autogen.sh
 %endif
-%configure2_5x --disable-schemas-install --disable-caches --disable-libburnia
+%configure2_5x --disable-schemas-install --disable-caches
 %make
 
 %install
