@@ -38,6 +38,7 @@ BuildRequires:	libburn-devel
 BuildRequires:	libisofs-devel
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libusb0.1-devel
+BuildRequires:	gnome-doc-utils
 %if %svn
 BuildRequires:	autoconf
 BuildRequires:	gnome-common
