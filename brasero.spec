@@ -1,4 +1,6 @@
-%define svn	815
+%define _disable_ld_no_undefined 1
+
+%define svn	0
 %define rel	1
 %if %svn
 %define release		%mkrel 0.%svn.%rel
@@ -6,13 +8,13 @@
 %define dirname		%name
 %else
 %define release		%mkrel %rel
-%define distname	%name-%version.tar.gz
+%define distname	%name-%version.tar.bz2
 %define dirname		%name-%version
 %endif
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	0.7.9
+Version: 	0.7.90
 Release: 	%{release}
 # For SVN: svn co http://svn.gnome.org/svn/brasero/trunk brasero
 Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.7/%{distname}
@@ -90,10 +92,7 @@ rm -rf %{buildroot}
 %if %mdkversion < 200900
 %post
 %post_install_gconf_schemas %{schemas}
-%update_menus
-%update_desktop_database
 %update_mime_database
-%update_icon_cache hicolor
 %endif
 
 %preun
@@ -101,16 +100,13 @@ rm -rf %{buildroot}
 
 %if %mdkversion < 200900
 %postun
-%clean_menus
-%clean_desktop_database
 %clean_mime_database
-%clean_icon_cache hicolor
 %endif
 
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS MAINTAINERS NEWS README
-%{_sysconfdir}/gconf/schemas/%name.schemas
+%{_sysconfdir}/gconf/schemas/%{name}.schemas
 %{_bindir}/%{name}
 %{_libdir}/%{name}
 %{_datadir}/applications/*
