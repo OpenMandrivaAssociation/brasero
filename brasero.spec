@@ -20,6 +20,8 @@ Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.7/%{distname}
 # Fix error in .desktop file - AdamW 2008/04
 Patch0:		brasero-761-desktop.patch
+# Fix build error with GCC 4.3 (upstream SVN rev 910) - AdamW 2008/06
+Patch1:		brasero-0.7.90-build.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -64,6 +66,7 @@ cdrkit or libburn / libisofs as the writing backend.
 %prep
 %setup -q -n %{dirname}
 %patch0 -p1 -b .desktop
+%patch1 -p1 -b .build
 
 %build
 %if %svn
@@ -82,7 +85,11 @@ desktop-file-install \
   --add-category="DiscBurning" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
-%find_lang %{name}
+%find_lang %{name} --with-gnome
+
+for omf in %{buildroot}%{_datadir}/omf/%{name}/%{name}-??*.omf;do 
+echo "%lang($(basename $omf|sed -e s/brasero-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %{name}.lang
+done
 
 %clean
 rm -rf %{buildroot}
@@ -114,4 +121,5 @@ rm -rf %{buildroot}
 %{_datadir}/icons/hicolor/*/apps/*
 %{_mandir}/man1/%{name}.1*
 %{_datadir}/mime/packages/%{name}.xml
+%{_datadir}/omf/%{name}/*-C.omf
 
