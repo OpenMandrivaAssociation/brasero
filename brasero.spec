@@ -14,14 +14,12 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	0.7.90
+Version: 	0.7.91
 Release: 	%{release}
 # For SVN: svn co http://svn.gnome.org/svn/brasero/trunk brasero
 Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.7/%{distname}
 # Fix error in .desktop file - AdamW 2008/04
 Patch0:		brasero-761-desktop.patch
-# Fix build error with GCC 4.3 (upstream SVN rev 910) - AdamW 2008/06
-Patch1:		brasero-0.7.90-build.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -66,7 +64,6 @@ cdrkit or libburn / libisofs as the writing backend.
 %prep
 %setup -q -n %{dirname}
 %patch0 -p1 -b .desktop
-%patch1 -p1 -b .build
 
 %build
 %if %svn
