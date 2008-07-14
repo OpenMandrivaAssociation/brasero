@@ -14,27 +14,22 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	0.7.91
+Version: 	0.8.0
 Release: 	%{release}
 # For SVN: svn co http://svn.gnome.org/svn/brasero/trunk brasero
-Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.7/%{distname}
-# Fix error in .desktop file - AdamW 2008/04
-Patch0:		brasero-761-desktop.patch
+Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.8/%{distname}
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	ImageMagick
 BuildRequires:	libgnome-vfs2-devel
-BuildRequires:	libnautilus-burn-devel
 BuildRequires:	gstreamer0.10-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libbeagle-devel >= 0.2.5
 BuildRequires:	totem-plparser-devel
 BuildRequires:	libgdl-devel >= 0.6
-BuildRequires:	libnotify-devel
-BuildRequires:	desktop-file-utils
 BuildRequires:	libgstreamer0.10-plugins-base-devel
 BuildRequires:	libburn-devel
 BuildRequires:	libisofs-devel
@@ -63,7 +58,6 @@ cdrkit or libburn / libisofs as the writing backend.
 
 %prep
 %setup -q -n %{dirname}
-%patch0 -p1 -b .desktop
 
 %build
 %if %svn
@@ -75,12 +69,6 @@ cdrkit or libburn / libisofs as the writing backend.
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-#menu
-desktop-file-install \
-  --remove-category="Application" \
-  --add-category="DiscBurning" \
-  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 %find_lang %{name} --with-gnome
 
