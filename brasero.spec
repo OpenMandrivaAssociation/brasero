@@ -1,7 +1,7 @@
 %define _disable_ld_no_undefined 1
 
 %define svn	0
-%define rel	1
+%define rel	2
 %if %svn
 %define release		%mkrel 0.%svn.%rel
 %define distname	%name-%svn.tar.lzma
@@ -24,15 +24,15 @@ Group:		Archiving/Cd burning
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	ImageMagick
 BuildRequires:	libgnome-vfs2-devel
-BuildRequires:	gstreamer0.10-devel
+BuildRequires:	libgstreamer-devel >= 0.10
 BuildRequires:	libxml2-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	libbeagle-devel >= 0.2.5
 BuildRequires:	totem-plparser-devel
 BuildRequires:	libgdl-devel >= 0.6
 BuildRequires:	libgstreamer0.10-plugins-base-devel
-BuildRequires:	libburn-devel
-BuildRequires:	libisofs-devel
+#BuildRequires:	libburn-devel
+#BuildRequires:	libisofs-devel
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libusb0.1-devel
 BuildRequires:	gnome-doc-utils
@@ -63,7 +63,9 @@ cdrkit or libburn / libisofs as the writing backend.
 %if %svn
 ./autogen.sh
 %endif
-%configure2_5x --disable-schemas-install --disable-caches
+# libburn backend disabled for now (0.8.1 2008/08), it's not working;
+# will restore when upstream advises it - AdamW
+%configure2_5x --disable-schemas-install --disable-caches --enable-libburnia=no
 %make
 
 %install
