@@ -14,7 +14,7 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	0.8.1
+Version: 	0.8.2
 Release: 	%{release}
 # For SVN: svn co http://svn.gnome.org/svn/brasero/trunk brasero
 Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.8/%{distname}
