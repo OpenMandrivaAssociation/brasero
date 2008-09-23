@@ -1,7 +1,7 @@
 %define _disable_ld_no_undefined 1
 
 %define svn	0
-%define rel	2
+%define rel	1
 %if %svn
 %define release		%mkrel 0.%svn.%rel
 %define distname	%name-%svn.tar.lzma
