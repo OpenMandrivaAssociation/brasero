@@ -52,6 +52,11 @@ Provides:	bonfire
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 
+# optional requirements to make video projects work
+Suggests:	vcdimager
+Suggests:	dvdauthor
+Suggests:	gstreamer0.10-plugins-bad
+
 %description
 Brasero is yet another CD / DVD writing application for the GNOME
 desktop. It is designed to be as simple as possible and has some
