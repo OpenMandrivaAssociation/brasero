@@ -24,6 +24,8 @@ Group:		Archiving/Cd burning
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	ImageMagick
 BuildRequires:	libgnome-vfs2-devel
+BuildRequires:	libgnomeui2-devel
+BuildRequires:	libgnome2-devel
 BuildRequires:	libgstreamer-devel >= 0.10
 BuildRequires:	libxml2-devel
 BuildRequires:	perl(XML::Parser)
@@ -36,6 +38,7 @@ BuildRequires:	libgstreamer0.10-plugins-base-devel
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libusb0.1-devel
 BuildRequires:	gnome-doc-utils
+BuildRequires:	gtk-doc
 %if %svn
 BuildRequires:	autoconf
 BuildRequires:	gnome-common
@@ -65,7 +68,10 @@ cdrkit or libburn / libisofs as the writing backend.
 %endif
 # libburn backend disabled for now (0.8.1 2008/08), it's not working;
 # will restore when upstream advises it - AdamW
-%configure2_5x --disable-schemas-install --disable-caches --enable-libburnia=no
+%configure2_5x --disable-schemas-install \
+               --disable-caches \
+               --enable-libburnia=no \
+               --enable-gtk-doc
 %make
 
 %install
