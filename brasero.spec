@@ -22,7 +22,7 @@ URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	ImageMagick
+BuildRequires:	imagemagick
 BuildRequires:	libgnome-vfs2-devel
 BuildRequires:	libgnomeui2-devel
 BuildRequires:	libgnome2-devel
