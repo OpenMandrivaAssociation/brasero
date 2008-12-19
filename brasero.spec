@@ -14,10 +14,11 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	0.8.3
+Version: 	0.8.4
 Release: 	%{release}
 # For SVN: svn co http://svn.gnome.org/svn/brasero/trunk brasero
 Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.8/%{distname}
+Patch: brasero-0.8.4-format-strings.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -28,7 +29,7 @@ BuildRequires:	libgnomeui2-devel
 BuildRequires:	libgnome2-devel
 BuildRequires:	libgstreamer-devel >= 0.10
 BuildRequires:	libxml2-devel
-BuildRequires:	perl(XML::Parser)
+BuildRequires:	nautilus-devel
 BuildRequires:	libbeagle-devel >= 0.2.5
 BuildRequires:	totem-plparser-devel
 BuildRequires:	libgdl-devel >= 0.6
@@ -39,10 +40,10 @@ BuildRequires:	libgcrypt-devel
 BuildRequires:	libusb0.1-devel
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gtk-doc
+BuildRequires:	intltool
 %if %svn
 BuildRequires:	autoconf
 BuildRequires:	gnome-common
-BuildRequires:	intltool
 %endif
 Requires:	hal >= 0.5.0
 
@@ -66,6 +67,7 @@ cdrkit or libburn / libisofs as the writing backend.
 
 %prep
 %setup -q -n %{dirname}
+%patch -p1
 
 %build
 %if %svn
@@ -114,6 +116,7 @@ rm -rf %{buildroot}
 %{_sysconfdir}/gconf/schemas/%{name}.schemas
 %{_bindir}/%{name}
 %{_libdir}/%{name}
+%_libdir/nautilus/extensions-2.0/libnautilus-brasero-extension.*
 %{_datadir}/applications/*
 %{_datadir}/%{name}
 %{_datadir}/icons/hicolor/*/apps/*
