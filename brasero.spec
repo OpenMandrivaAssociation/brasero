@@ -29,7 +29,7 @@ BuildRequires:	libgnomeui2-devel
 BuildRequires:	libgnome2-devel
 BuildRequires:	libgstreamer-devel >= 0.10
 BuildRequires:	libxml2-devel
-BuildRequires:	nautilus-devel
+BuildRequires:	nautilus-devel eel-devel
 BuildRequires:	hal-devel
 BuildRequires:	libbeagle-devel >= 0.2.5
 BuildRequires:	totem-plparser-devel
