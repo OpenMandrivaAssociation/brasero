@@ -1,5 +1,3 @@
-%define _disable_ld_no_undefined 1
-
 %define svn	0
 %define rel	1
 %if %svn
@@ -14,11 +12,12 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	0.8.4
+Version: 	0.9.0
 Release: 	%{release}
 # For SVN: svn co http://svn.gnome.org/svn/brasero/trunk brasero
-Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.8/%{distname}
-Patch: brasero-0.8.4-format-strings.patch
+Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.9/%{distname}
+Patch0:		brasero-0.9.0-format-strings.patch
+Patch1:		brasero-0.9.0-fix-linkage.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -68,7 +67,8 @@ cdrkit or libburn / libisofs as the writing backend.
 
 %prep
 %setup -q -n %{dirname}
-%patch -p1
+%patch0 -p1 -b .format-strings
+%patch1 -p0 -b .linkage
 
 %build
 %if %svn
