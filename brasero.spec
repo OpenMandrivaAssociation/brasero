@@ -18,6 +18,7 @@ Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.9/%{distname}
 Patch0:		brasero-0.9.0-format-strings.patch
 Patch1:		brasero-0.9.0-fix-linkage.patch
+Patch2:		brasero-0.9.0-link-gobject.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -69,11 +70,13 @@ cdrkit or libburn / libisofs as the writing backend.
 %setup -q -n %{dirname}
 %patch0 -p1 -b .format-strings
 %patch1 -p0 -b .linkage
+%patch2 -p0 -b .lgobject
 
 %build
 %if %svn
 ./autogen.sh
 %endif
+autoreconf
 # libburn backend disabled for now (0.8.1 2008/08), it's not working;
 # will restore when upstream advises it - AdamW
 %configure2_5x --disable-schemas-install \
