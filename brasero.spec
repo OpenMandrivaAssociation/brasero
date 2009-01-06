@@ -44,8 +44,8 @@ BuildRequires:	gtk-doc
 BuildRequires:	intltool
 %if %svn
 BuildRequires:	autoconf
-BuildRequires:	gnome-common
 %endif
+BuildRequires:	gnome-common
 Requires:	hal >= 0.5.0
 
 Obsoletes:	bonfire
@@ -76,7 +76,7 @@ cdrkit or libburn / libisofs as the writing backend.
 %if %svn
 ./autogen.sh
 %endif
-autoreconf
+gnome-autogen.sh
 # libburn backend disabled for now (0.8.1 2008/08), it's not working;
 # will restore when upstream advises it - AdamW
 %configure2_5x --disable-schemas-install \
