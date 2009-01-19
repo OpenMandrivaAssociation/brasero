@@ -10,15 +10,16 @@
 %define dirname		%name-%version
 %endif
 
+%define major 0
+%define libname %mklibname %name %major
+%define develname %mklibname -d %name
+
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	0.9.0
+Version: 	0.9.1
 Release: 	%{release}
 # For SVN: svn co http://svn.gnome.org/svn/brasero/trunk brasero
 Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/0.9/%{distname}
-Patch0:		brasero-0.9.0-format-strings.patch
-Patch1:		brasero-0.9.0-fix-linkage.patch
-Patch2:		brasero-0.9.0-link-gobject.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -66,17 +67,39 @@ unique features to enable users to create their discs easily and
 quickly. It can handle both audio and data discs, and can use either
 cdrkit or libburn / libisofs as the writing backend.
 
+%package -n %libname
+Group: System/Libraries
+Summary: A disc burning application for GNOME - shared library
+
+%description -n %libname
+Brasero is yet another CD / DVD writing application for the GNOME
+desktop. It is designed to be as simple as possible and has some
+unique features to enable users to create their discs easily and
+quickly. It can handle both audio and data discs, and can use either
+cdrkit or libburn / libisofs as the writing backend.
+
+%package -n %develname
+Summary: A disc burning application for GNOME - development library
+Group: Development/C
+Requires: %libname = %version-%release
+Provides: %name-devel = %version-%release
+Provides: lib%name-devel = %version-%release
+
+%description -n %develname
+Brasero is yet another CD / DVD writing application for the GNOME
+desktop. It is designed to be as simple as possible and has some
+unique features to enable users to create their discs easily and
+quickly. It can handle both audio and data discs, and can use either
+cdrkit or libburn / libisofs as the writing backend.
+
 %prep
 %setup -q -n %{dirname}
-%patch0 -p1 -b .format-strings
-%patch1 -p0 -b .linkage
-%patch2 -p0 -b .lgobject
 
 %build
 %if %svn
 ./autogen.sh
 %endif
-gnome-autogen.sh
+#gnome-autogen.sh
 # libburn backend disabled for now (0.8.1 2008/08), it's not working;
 # will restore when upstream advises it - AdamW
 %configure2_5x --disable-schemas-install \
@@ -128,3 +151,14 @@ rm -rf %{buildroot}
 %{_datadir}/mime/packages/%{name}.xml
 %{_datadir}/omf/%{name}/*-C.omf
 
+%files -n %libname
+%defattr(-,root,root)
+%_libdir/libbrasero-media.so.%{major}*
+
+%files -n %develname
+%defattr(-,root,root)
+%_libdir/libbrasero-media.so
+%_libdir/libbrasero-media.la
+%_libdir/pkgconfig/*.pc
+%_includedir/%name
+%_datadir/gtk-doc/html/%name
