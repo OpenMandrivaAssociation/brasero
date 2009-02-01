@@ -19,7 +19,7 @@ Summary: 	A disc burning application for GNOME
 Version: 	0.9.1
 Release: 	%{release}
 # For SVN: svn co http://svn.gnome.org/svn/brasero/trunk brasero
-Source0:	http://ftp.gnome.org/pub/gnome/sources/brasero/%{distname}
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
