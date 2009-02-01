@@ -21,6 +21,7 @@ Release: 	%{release}
 # For SVN: svn co http://svn.gnome.org/svn/brasero/trunk brasero
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
 Patch0:		brasero-2.25.90-fix-str-fmt.patch
+Patch1:		brasero-2.25.90-linkage.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -92,6 +93,7 @@ cdrkit or libburn / libisofs as the writing backend.
 %prep
 %setup -q -n %{dirname}
 %patch0 -p0
+%patch1 -p0
 
 %build
 %if %svn
