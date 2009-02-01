@@ -16,33 +16,30 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	0.9.1
+Version: 	2.25.90
 Release: 	%{release}
 # For SVN: svn co http://svn.gnome.org/svn/brasero/trunk brasero
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
+Patch0:		brasero-2.25.90-fix-str-fmt.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	imagemagick
-BuildRequires:	libgnome-vfs2-devel
-BuildRequires:	libgnomeui2-devel
-BuildRequires:	libgnome2-devel
-BuildRequires:	libgstreamer-devel >= 0.10
-BuildRequires:	libxml2-devel
-BuildRequires:	nautilus-devel eel-devel
-BuildRequires:	hal-devel
-BuildRequires:	libbeagle-devel >= 0.2.5
-BuildRequires:	totem-plparser-devel
+BuildRequires:	libgstreamer-devel >= 0.10.15
+BuildRequires:	libxml2-devel >= 2.6.0
+BuildRequires:	nautilus-devel >= 2.22.2
+BuildRequires:	hal-devel >= 0.5
+BuildRequires:	libbeagle-devel >= 0.3.0
+BuildRequires:	totem-plparser-devel >= 2.22.0
 BuildRequires:	libgdl-devel >= 0.6
-BuildRequires:	libgstreamer0.10-plugins-base-devel
+BuildRequires:	dbus-glib-devel >= 0.7.2
+BuildRequires:	libgstreamer0.10-plugins-base-devel >= 0.10.0
 #BuildRequires:	libburn-devel
 #BuildRequires:	libisofs-devel
-BuildRequires:	libgcrypt-devel
-BuildRequires:	libusb0.1-devel
 BuildRequires:	gnome-doc-utils
-BuildRequires:	gtk-doc
-BuildRequires:	intltool
+BuildRequires:	gtk-doc >= 1.3
+BuildRequires:	intltool >= 0.35.0
 %if %svn
 BuildRequires:	autoconf
 %endif
@@ -94,6 +91,7 @@ cdrkit or libburn / libisofs as the writing backend.
 
 %prep
 %setup -q -n %{dirname}
+%patch0 -p0
 
 %build
 %if %svn
