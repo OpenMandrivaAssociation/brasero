@@ -7,7 +7,7 @@
 %else
 %define release		%mkrel %rel
 %define distname	%name-%version.tar.bz2
-%define dirname		%name-2.25.91
+%define dirname		%name-%version
 %endif
 
 %define major 0
@@ -16,7 +16,7 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	2.25.91.1
+Version: 	2.25.91.2
 Release: 	%{release}
 # For SVN: svn co http://svn.gnome.org/svn/brasero/trunk brasero
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
