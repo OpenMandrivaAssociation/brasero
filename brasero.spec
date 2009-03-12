@@ -45,8 +45,8 @@ BuildRequires:	autoconf
 BuildRequires:	gnome-common
 Requires:	hal >= 0.5.0
 
-Obsoletes:	bonfire
-Provides:	bonfire
+Obsoletes:	bonfire nautilus-cd-burner
+Provides:	bonfire nautilus-cd-burner
 
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
