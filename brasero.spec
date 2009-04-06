@@ -1,5 +1,5 @@
 %define svn	0
-%define rel	1
+%define rel	2
 %if %svn
 %define release		%mkrel 0.%svn.%rel
 %define distname	%name-%svn.tar.lzma
@@ -20,6 +20,8 @@ Version: 	2.26.0
 Release: 	%{release}
 # For SVN: svn co http://svn.gnome.org/svn/brasero/trunk brasero
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
+# (fc) 2.26.0-2mdv various crash fixes from SVN
+Patch0:		brasero-2.26.0-svnfixes.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -90,6 +92,7 @@ cdrkit or libburn / libisofs as the writing backend.
 
 %prep
 %setup -q -n %{dirname}
+%patch0 -p1 -b .svnfixes
 
 %build
 %if %svn
