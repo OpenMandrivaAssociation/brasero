@@ -26,6 +26,7 @@ BuildRequires:	totem-plparser-devel >= 2.22.0
 BuildRequires:	libgdl-devel >= 0.6
 BuildRequires:	dbus-glib-devel >= 0.7.2
 BuildRequires:	libgstreamer0.10-plugins-base-devel >= 0.10.0
+BuildRequires:	unique-devel
 #BuildRequires:	libburn-devel
 #BuildRequires:	libisofs-devel
 BuildRequires:	gnome-doc-utils
