@@ -1,14 +1,7 @@
-%define svn	0
 %define rel	1
-%if %svn
-%define release		%mkrel 0.%svn.%rel
-%define distname	%name-%svn.tar.lzma
-%define dirname		%name
-%else
 %define release		%mkrel %rel
 %define distname	%name-%version.tar.bz2
 %define dirname		%name-%version
-%endif
 
 %define major 0
 %define libname %mklibname %name %major
@@ -16,9 +9,8 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	2.26.1
+Version: 	2.27.1
 Release: 	%{release}
-# For SVN: svn co http://svn.gnome.org/svn/brasero/trunk brasero
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
@@ -39,9 +31,6 @@ BuildRequires:	libgstreamer0.10-plugins-base-devel >= 0.10.0
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gtk-doc >= 1.3
 BuildRequires:	intltool >= 0.35.0
-%if %svn
-BuildRequires:	autoconf
-%endif
 BuildRequires:	gnome-common
 Requires:	hal >= 0.5.0
 
@@ -92,17 +81,13 @@ cdrkit or libburn / libisofs as the writing backend.
 %setup -q -n %{dirname}
 
 %build
-%if %svn
-./autogen.sh
-%endif
-#gnome-autogen.sh
 # libburn backend disabled for now (0.8.1 2008/08), it's not working;
 # will restore when upstream advises it - AdamW
 %configure2_5x --disable-schemas-install \
                --disable-caches \
                --enable-libburnia=no \
                --enable-gtk-doc
-%make
+%make LIBS=-lm
 
 %install
 rm -rf %{buildroot}
@@ -149,12 +134,14 @@ rm -rf %{buildroot}
 
 %files -n %libname
 %defattr(-,root,root)
+%_libdir/libbrasero-burn.so.%{major}*
 %_libdir/libbrasero-media.so.%{major}*
+%_libdir/libbrasero-utils.so.%{major}*
 
 %files -n %develname
 %defattr(-,root,root)
-%_libdir/libbrasero-media.so
-%_libdir/libbrasero-media.la
+%_libdir/libbrasero-*.so
+%_libdir/libbrasero-*.la
 %_libdir/pkgconfig/*.pc
 %_includedir/%name
 %_datadir/gtk-doc/html/%name
