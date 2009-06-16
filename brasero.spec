@@ -9,9 +9,10 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	2.27.2
+Version: 	2.27.3
 Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
+Patch:		brasero-2.27.3-fix-format-strings.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -80,6 +81,7 @@ cdrkit or libburn / libisofs as the writing backend.
 
 %prep
 %setup -q -n %{dirname}
+%patch -p1
 
 %build
 # libburn backend disabled for now (0.8.1 2008/08), it's not working;
