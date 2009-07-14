@@ -9,10 +9,10 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	2.27.3
+Version: 	2.27.4
 Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
-Patch:		brasero-2.27.3-fix-format-strings.patch
+Patch:		brasero-2.27.4-fix-format-strings.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -21,7 +21,6 @@ BuildRequires:	imagemagick
 BuildRequires:	libgstreamer-devel >= 0.10.15
 BuildRequires:	libxml2-devel >= 2.6.0
 BuildRequires:	nautilus-devel >= 2.22.2
-BuildRequires:	hal-devel >= 0.5
 BuildRequires:	libbeagle-devel >= 0.3.0
 BuildRequires:	totem-plparser-devel >= 2.22.0
 BuildRequires:	libgdl-devel >= 0.6
@@ -34,7 +33,6 @@ BuildRequires:	gnome-doc-utils
 BuildRequires:	gtk-doc >= 1.3
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	gnome-common
-Requires:	hal >= 0.5.0
 
 Obsoletes:	bonfire nautilus-cd-burner
 Provides:	bonfire nautilus-cd-burner
