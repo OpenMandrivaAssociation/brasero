@@ -1,4 +1,4 @@
-%define rel	1
+%define rel	2
 %define release		%mkrel %rel
 %define distname	%name-%version.tar.bz2
 %define dirname		%name-%version
@@ -13,6 +13,8 @@ Version: 	2.27.4
 Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
 Patch:		brasero-2.27.4-fix-format-strings.patch
+# http://bugzilla.gnome.org/show_bug.cgi?id=588604
+Patch1:		brasero-2.27.4-fix-pkgconfig.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -80,6 +82,7 @@ cdrkit or libburn / libisofs as the writing backend.
 %prep
 %setup -q -n %{dirname}
 %patch -p1
+%patch1 -p1
 
 %build
 # libburn backend disabled for now (0.8.1 2008/08), it's not working;
