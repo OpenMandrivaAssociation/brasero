@@ -22,6 +22,7 @@ BuildRequires:	libgstreamer-devel >= 0.10.15
 BuildRequires:	libxml2-devel >= 2.6.0
 BuildRequires:	nautilus-devel >= 2.22.2
 BuildRequires:	libbeagle-devel >= 0.3.0
+BuildRequires:	libGConf2-devel
 BuildRequires:	totem-plparser-devel >= 2.22.0
 BuildRequires:	libgdl-devel >= 0.6
 BuildRequires:	dbus-glib-devel >= 0.7.2
