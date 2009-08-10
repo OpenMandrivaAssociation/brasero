@@ -1,4 +1,4 @@
-%define rel	2
+%define rel	1
 %define release		%mkrel %rel
 %define distname	%name-%version.tar.bz2
 %define dirname		%name-%version
@@ -9,7 +9,7 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	2.27.5
+Version: 	2.27.90
 Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
 Patch:		brasero-2.27.4-fix-format-strings.patch
@@ -146,4 +146,4 @@ rm -rf %{buildroot}
 %_libdir/libbrasero-*.la
 %_libdir/pkgconfig/*.pc
 %_includedir/%name
-%_datadir/gtk-doc/html/%name
+%_datadir/gtk-doc/html/libbrasero*
