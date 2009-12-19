@@ -9,10 +9,10 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	2.28.3
+Version: 	2.29.3
 Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
-Patch:		brasero-2.27.4-fix-format-strings.patch
+Patch:		brasero-2.29.3-fix-format-strings.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -28,10 +28,12 @@ BuildRequires:	libgdl-devel >= 0.6
 BuildRequires:	dbus-glib-devel >= 0.7.2
 BuildRequires:	libgstreamer0.10-plugins-base-devel >= 0.10.0
 BuildRequires:	unique-devel
+BuildRequires:	gobject-introspection-devel
+BuildRequires:	gir-repository
 #BuildRequires:	libburn-devel
 #BuildRequires:	libisofs-devel
 BuildRequires:	gnome-doc-utils
-BuildRequires:	gtk-doc >= 1.3
+BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	gnome-common
 
@@ -80,7 +82,7 @@ cdrkit or libburn / libisofs as the writing backend.
 
 %prep
 %setup -q -n %{dirname}
-%patch -p1
+%patch -p1 -b .fix-format-strings
 
 %build
 # libburn backend disabled for now (0.8.1 2008/08), it's not working;
@@ -139,6 +141,9 @@ rm -rf %{buildroot}
 %_libdir/libbrasero-burn.so.%{major}*
 %_libdir/libbrasero-media.so.%{major}*
 %_libdir/libbrasero-utils.so.%{major}*
+%_libdir/girepository-1.0/BraseroBurn-1.0.typelib
+%_libdir/girepository-1.0/BraseroMedia-1.0.typelib
+
 
 %files -n %develname
 %defattr(-,root,root)
@@ -147,3 +152,5 @@ rm -rf %{buildroot}
 %_libdir/pkgconfig/*.pc
 %_includedir/%name
 %_datadir/gtk-doc/html/libbrasero*
+%_datadir/gir-1.0/BraseroBurn-1.0.gir
+%_datadir/gir-1.0/BraseroMedia-1.0.gir
