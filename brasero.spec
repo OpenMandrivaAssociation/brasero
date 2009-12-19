@@ -28,6 +28,7 @@ BuildRequires:	libgdl-devel >= 0.6
 BuildRequires:	dbus-glib-devel >= 0.7.2
 BuildRequires:	libgstreamer0.10-plugins-base-devel >= 0.10.0
 BuildRequires:	unique-devel
+BuildRequires:	libcanberra-devel
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gir-repository
 #BuildRequires:	libburn-devel
