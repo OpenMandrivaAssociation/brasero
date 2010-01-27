@@ -9,7 +9,7 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	2.29.4
+Version: 	2.29.6
 Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
 Patch:		brasero-2.29.3-fix-format-strings.patch
