@@ -1,4 +1,4 @@
-%define rel	2
+%define rel	1
 %define release		%mkrel %rel
 %define distname	%name-%version.tar.bz2
 %define dirname		%name-%version
@@ -9,13 +9,10 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	2.29.92
+Version: 	2.30.0
 Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
 Patch0:		brasero-2.29.3-fix-format-strings.patch
-#gw brasero burn:/// would hang
-#https://bugzilla.gnome.org/show_bug.cgi?id=611111
-Patch1:		brasero-dont-hang-on-startup.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
