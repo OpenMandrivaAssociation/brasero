@@ -24,7 +24,7 @@ BuildRequires:	imagemagick
 BuildRequires:	libgstreamer-devel >= 0.10.15
 BuildRequires:	libxml2-devel >= 2.6.0
 BuildRequires:	nautilus-devel >= 2.22.2
-BuildRequires:	libtracker-devel >= 0.7.0
+BuildRequires:	tracker-devel >= 0.7.0
 BuildRequires:	libGConf2-devel
 BuildRequires:	totem-plparser-devel >= 2.22.0
 BuildRequires:	libgdl-devel >= 0.6
