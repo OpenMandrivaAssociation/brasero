@@ -1,4 +1,4 @@
-%define rel	1
+%define rel	2
 %define release		%mkrel %rel
 %define distname	%name-%version.tar.bz2
 %define dirname		%name-%version
@@ -12,7 +12,10 @@ Summary: 	A disc burning application for GNOME
 Version: 	2.30.0
 Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
+# (gw) fix format security warning (GNOME bug #615601 / 615606)
 Patch0:		brasero-2.29.3-fix-format-strings.patch
+# (fc) 2.30.0-2mdv fix build with tracker 0.8.0 (GNOME bug #616831)
+Patch1:		brasero-2.30.0-tracker08.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -21,7 +24,7 @@ BuildRequires:	imagemagick
 BuildRequires:	libgstreamer-devel >= 0.10.15
 BuildRequires:	libxml2-devel >= 2.6.0
 BuildRequires:	nautilus-devel >= 2.22.2
-BuildRequires:	libbeagle-devel >= 0.3.0
+BuildRequires:	libtracker-devel >= 0.7.0
 BuildRequires:	libGConf2-devel
 BuildRequires:	totem-plparser-devel >= 2.22.0
 BuildRequires:	libgdl-devel >= 0.6
@@ -85,14 +88,19 @@ cdrkit or libburn / libisofs as the writing backend.
 %setup -q -n %{dirname}
 %apply_patches
 
+#needed by patch 1
+autoreconf
+
 %build
 # libburn backend disabled for now (0.8.1 2008/08), it's not working;
 # will restore when upstream advises it - AdamW
 %configure2_5x --disable-schemas-install \
                --disable-caches \
+               --enable-search=tracker \
                --enable-libburnia=no \
                --enable-gtk-doc
-%make LIBS=-lm
+%make 
+#LIBS=-lm
 
 %install
 rm -rf %{buildroot}
