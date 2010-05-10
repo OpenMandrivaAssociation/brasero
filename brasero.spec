@@ -1,4 +1,4 @@
-%define rel	2
+%define rel	3
 %define release		%mkrel %rel
 %define distname	%name-%version.tar.bz2
 %define dirname		%name-%version
@@ -12,6 +12,9 @@ Summary: 	A disc burning application for GNOME
 Version: 	2.30.1
 Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
+Source1:    brasero_copy_disc.desktop
+Source2:    brasero_create_data_project_from_blank_medium.desktop
+Source3:    brasero_create_audio_cd_from_blank_medium.desktop
 # (gw) fix format security warning (GNOME bug #615601 / 615606)
 Patch0:		brasero-2.29.3-fix-format-strings.patch
 URL:		http://www.gnome.org/projects/brasero/
@@ -107,6 +110,12 @@ for omf in %{buildroot}%{_datadir}/omf/%{name}/%{name}-??*.omf;do
 echo "%lang($(basename $omf|sed -e s/brasero-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %{name}.lang
 done
 
+#(nl) KDE Solid integration
+mkdir -p %buildroot/%_datadir/apps/solid/actions
+install -D -m 644 %{SOURCE1} $RPM_BUILD_ROOT%_datadir/apps/solid/actions/
+install -D -m 644 %{SOURCE2} $RPM_BUILD_ROOT%_datadir/apps/solid/actions/
+install -D -m 644 %{SOURCE3} $RPM_BUILD_ROOT%_datadir/apps/solid/actions/
+
 %clean
 rm -rf %{buildroot}
 
@@ -139,6 +148,7 @@ rm -rf %{buildroot}
 %{_mandir}/man1/%{name}.1*
 %{_datadir}/mime/packages/%{name}.xml
 %{_datadir}/omf/%{name}/*-C.omf
+%_datadir/apps/solid/actions/
 
 %files -n %libname
 %defattr(-,root,root)
