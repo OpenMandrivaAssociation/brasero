@@ -1,4 +1,4 @@
-%define rel	3
+%define rel	4
 %define release		%mkrel %rel
 %define distname	%name-%version.tar.bz2
 %define dirname		%name-%version
@@ -17,6 +17,7 @@ Source2:    brasero_create_data_project_from_blank_medium.desktop
 Source3:    brasero_create_audio_cd_from_blank_medium.desktop
 # (gw) fix format security warning (GNOME bug #615601 / 615606)
 Patch0:		brasero-2.29.3-fix-format-strings.patch
+Patch1:		brasero-2.30.1-gitfixes.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
