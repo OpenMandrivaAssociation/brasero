@@ -1,4 +1,4 @@
-%define rel	4
+%define rel	5
 %define release		%mkrel %rel
 %define distname	%name-%version.tar.bz2
 %define dirname		%name-%version
