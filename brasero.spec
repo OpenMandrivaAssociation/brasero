@@ -1,4 +1,4 @@
-%define rel	5
+%define rel	1
 %define release		%mkrel %rel
 %define distname	%name-%version.tar.bz2
 %define dirname		%name-%version
@@ -9,7 +9,7 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	2.30.1
+Version: 	2.30.2
 Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
 Source1:    brasero_copy_disc.desktop
@@ -17,7 +17,6 @@ Source2:    brasero_create_data_project_from_blank_medium.desktop
 Source3:    brasero_create_audio_cd_from_blank_medium.desktop
 # (gw) fix format security warning (GNOME bug #615601 / 615606)
 Patch0:		brasero-2.29.3-fix-format-strings.patch
-Patch1:		brasero-2.30.1-gitfixes.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -99,7 +98,6 @@ cdrkit or libburn / libisofs as the writing backend.
                --enable-libburnia=no \
                --enable-gtk-doc
 %make 
-#LIBS=-lm
 
 %install
 rm -rf %{buildroot}
