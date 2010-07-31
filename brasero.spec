@@ -1,4 +1,4 @@
-%define rel	1
+%define rel	2
 %define release		%mkrel %rel
 %define distname	%name-%version.tar.bz2
 %define dirname		%name-%version
@@ -34,9 +34,6 @@ BuildRequires:	libgstreamer0.10-plugins-base-devel >= 0.10.0
 BuildRequires:	unique-devel
 BuildRequires:	libcanberra-devel
 BuildRequires:	gobject-introspection-devel
-BuildRequires:	gir-repository
-#BuildRequires:	libburn-devel
-#BuildRequires:	libisofs-devel
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	intltool >= 0.35.0
