@@ -1,22 +1,20 @@
-%define rel	2
+%define rel	1
 %define release		%mkrel %rel
 %define distname	%name-%version.tar.bz2
 %define dirname		%name-%version
 
-%define major 0
+%define major 1
 %define libname %mklibname %name %major
 %define develname %mklibname -d %name
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	2.30.2
+Version: 	2.31.90
 Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
 Source1:    brasero_copy_disc.desktop
 Source2:    brasero_create_data_project_from_blank_medium.desktop
 Source3:    brasero_create_audio_cd_from_blank_medium.desktop
-# (gw) fix format security warning (GNOME bug #615601 / 615606)
-Patch0:		brasero-2.29.3-fix-format-strings.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -93,7 +91,8 @@ cdrkit or libburn / libisofs as the writing backend.
                --disable-caches \
                --enable-search=tracker \
                --enable-libburnia=no \
-               --enable-gtk-doc
+               --enable-gtk-doc \
+	       --enable-gtk3=no
 %make 
 
 %install
@@ -115,31 +114,17 @@ install -D -m 644 %{SOURCE3} $RPM_BUILD_ROOT%_datadir/apps/solid/actions/
 %clean
 rm -rf %{buildroot}
 
-%define schemas %{name}
-
-%if %mdkversion < 200900
-%post
-%post_install_gconf_schemas %{schemas}
-%update_mime_database
-%endif
-
-%preun
-%preun_uninstall_gconf_schemas %{schemas}
-
-%if %mdkversion < 200900
-%postun
-%clean_mime_database
-%endif
 
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS MAINTAINERS NEWS README
-%{_sysconfdir}/gconf/schemas/%{name}.schemas
 %{_bindir}/%{name}
 %{_libdir}/%{name}
 %_libdir/nautilus/extensions-2.0/libnautilus-brasero-extension.*
 %{_datadir}/applications/*
 %{_datadir}/%{name}
+%_datadir/glib-2.0/schemas/org.gnome.brasero.gschema.xml
+%_datadir/GConf/gsettings/brasero.convert
 %{_datadir}/icons/hicolor/*/apps/*
 %{_mandir}/man1/%{name}.1*
 %{_datadir}/mime/packages/%{name}.xml
@@ -151,8 +136,8 @@ rm -rf %{buildroot}
 %_libdir/libbrasero-burn.so.%{major}*
 %_libdir/libbrasero-media.so.%{major}*
 %_libdir/libbrasero-utils.so.%{major}*
-%_libdir/girepository-1.0/BraseroBurn-1.0.typelib
-%_libdir/girepository-1.0/BraseroMedia-1.0.typelib
+%_libdir/girepository-1.0/BraseroBurn-%version.typelib
+%_libdir/girepository-1.0/BraseroMedia-%version.typelib
 
 
 %files -n %develname
@@ -162,5 +147,5 @@ rm -rf %{buildroot}
 %_libdir/pkgconfig/*.pc
 %_includedir/%name
 %_datadir/gtk-doc/html/libbrasero*
-%_datadir/gir-1.0/BraseroBurn-1.0.gir
-%_datadir/gir-1.0/BraseroMedia-1.0.gir
+%_datadir/gir-1.0/BraseroBurn-%version.gir
+%_datadir/gir-1.0/BraseroMedia-%version.gir
