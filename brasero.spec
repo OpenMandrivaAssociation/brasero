@@ -9,7 +9,7 @@
 
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
-Version: 	2.31.90
+Version: 	2.31.91
 Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
 Source1:    brasero_copy_disc.desktop
