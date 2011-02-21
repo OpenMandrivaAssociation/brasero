@@ -1,7 +1,5 @@
-%define rel	1
-%define release		%mkrel %rel
 %define distname	%name-%version.tar.bz2
-%define dirname		%name-%version
+%define dir_name	%name-%version
 
 %define major 1
 %define libname %mklibname %name %major
@@ -10,7 +8,7 @@
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
 Version: 	2.32.1
-Release: 	%{release}
+Release: 	%mkrel 2
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
 Source1:    brasero_copy_disc.desktop
 Source2:    brasero_create_data_project_from_blank_medium.desktop
@@ -42,6 +40,9 @@ Provides:	bonfire nautilus-cd-burner
 
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
+Requires:	cdrkit
+Suggests:	cdrdao
+Suggests:	dvd+rw-tools
 
 # optional requirements to make video projects work
 Suggests:	vcdimager
@@ -81,7 +82,7 @@ quickly. It can handle both audio and data discs, and can use either
 cdrkit or libburn / libisofs as the writing backend.
 
 %prep
-%setup -q -n %{dirname}
+%setup -q -n %{dir_name}
 %apply_patches
 
 %build
