@@ -34,6 +34,7 @@ BuildRequires:	gnome-doc-utils
 BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	gnome-common
+BuildRequires:	libsm-devel
 
 Obsoletes:	bonfire nautilus-cd-burner
 Provides:	bonfire nautilus-cd-burner
