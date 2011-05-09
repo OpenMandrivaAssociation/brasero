@@ -8,11 +8,12 @@
 Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
 Version: 	2.32.1
-Release: 	%mkrel 3
+Release: 	%mkrel 4
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
 Source1:    brasero_copy_disc.desktop
 Source2:    brasero_create_data_project_from_blank_medium.desktop
 Source3:    brasero_create_audio_cd_from_blank_medium.desktop
+Patch0:		brasero-2.32.1-fix-zh_CN.patch
 URL:		http://www.gnome.org/projects/brasero/
 License:	GPLv2+
 Group:		Archiving/Cd burning
