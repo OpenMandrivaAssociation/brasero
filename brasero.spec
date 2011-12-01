@@ -110,9 +110,9 @@ done
 
 #(nl) KDE Solid integration
 mkdir -p %buildroot/%_datadir/apps/solid/actions
-install -D -m 644 %{SOURCE1} $RPM_BUILD_ROOT%_datadir/apps/solid/actions/
-install -D -m 644 %{SOURCE2} $RPM_BUILD_ROOT%_datadir/apps/solid/actions/
-install -D -m 644 %{SOURCE3} $RPM_BUILD_ROOT%_datadir/apps/solid/actions/
+install -D -m 644 %{SOURCE1} %{buildroot}%_datadir/apps/solid/actions/
+install -D -m 644 %{SOURCE2} %{buildroot}%_datadir/apps/solid/actions/
+install -D -m 644 %{SOURCE3} %{buildroot}%_datadir/apps/solid/actions/
 
 %clean
 rm -rf %{buildroot}
