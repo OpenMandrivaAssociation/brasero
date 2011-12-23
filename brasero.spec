@@ -25,7 +25,7 @@ BuildRequires:	nautilus-devel >= 2.22.2
 BuildRequires:	tracker-devel >= 0.7.0
 BuildRequires:	libGConf2-devel
 BuildRequires:	totem-plparser-devel >= 2.22.0
-BuildRequires:	libgdl-devel >= 0.6
+BuildRequires:	pkgconfig(gdl-1.0)
 BuildRequires:	dbus-glib-devel >= 0.7.2
 BuildRequires:	libgstreamer0.10-plugins-base-devel >= 0.10.0
 BuildRequires:	unique-devel
