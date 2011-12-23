@@ -9,14 +9,14 @@ Name: 	 	brasero
 Summary: 	A disc burning application for GNOME
 Version: 	2.32.1
 Release: 	7
+License:	GPLv2+
+Group:		Archiving/Cd burning
+URL:		http://www.gnome.org/projects/brasero/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{distname}
 Source1:    brasero_copy_disc.desktop
 Source2:    brasero_create_data_project_from_blank_medium.desktop
 Source3:    brasero_create_audio_cd_from_blank_medium.desktop
 Patch0:		brasero-2.32.1-fix-zh_CN.patch
-URL:		http://www.gnome.org/projects/brasero/
-License:	GPLv2+
-Group:		Archiving/Cd burning
 
 BuildRequires:	imagemagick
 BuildRequires:	libgstreamer-devel >= 0.10.15
@@ -93,7 +93,7 @@ cdrkit or libburn / libisofs as the writing backend.
    	--enable-search=tracker \
    	--enable-libburnia=no \
 	--enable-gtk3=no
-%make 
+%make LIBS='-lm'
 
 %install
 rm -rf %{buildroot}
@@ -132,7 +132,6 @@ install -D -m 644 %{SOURCE3} %{buildroot}%{_datadir}/apps/solid/actions/
 %{_libdir}/libbrasero-utils.so.%{major}*
 %{_libdir}/girepository-1.0/BraseroBurn-%{version}.typelib
 %{_libdir}/girepository-1.0/BraseroMedia-%{version}.typelib
-
 
 %files -n %{develname}
 %{_libdir}/libbrasero-*.so
