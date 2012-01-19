@@ -2,9 +2,9 @@
 %define major 1
 %define gir_major 3.2.0
 
-%define libburn %mklibname %{name} %{api} %{major}
-%define libmedia %mklibname %{name} %{api} %{major}
-%define libutils %mklibname %{name} %{api} %{major}
+%define libburn %mklibname %{name}-burn %{api} %{major}
+%define libmedia %mklibname %{name}-media %{api} %{major}
+%define libutils %mklibname %{name}-utils %{api} %{major}
 %define girburn %mklibname %{name}-burn-gir %{gir_major}
 %define girmedia %mklibname %{name}-media-gir %{gir_major}
 %define develname %mklibname -d %{name}
@@ -20,6 +20,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{name}-%{version}.tar.x
 Source1:    brasero_copy_disc.desktop
 Source2:    brasero_create_data_project_from_blank_medium.desktop
 Source3:    brasero_create_audio_cd_from_blank_medium.desktop
+Patch0:		brasero-3.1.90-fix-str-fmt.patch
 
 BuildRequires:  intltool >= 0.35.0
 BuildRequires:  gnome-doc-utils
