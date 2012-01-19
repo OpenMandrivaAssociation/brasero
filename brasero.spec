@@ -180,7 +180,7 @@ install -D -m 644 %{SOURCE3} %{buildroot}%{_datadir}/apps/solid/actions/
 %files -n %{develname}
 %{_libdir}/libbrasero-*.so
 %{_libdir}/pkgconfig/*.pc
-%{_includedir}/%{name}
+%{_includedir}/%{name}%{api}
 %{_datadir}/gtk-doc/html/libbrasero*
 %{_datadir}/gir-1.0/BraseroBurn-%{gir_major}.gir
 %{_datadir}/gir-1.0/BraseroMedia-%{gir_major}.gir
