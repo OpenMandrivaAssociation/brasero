@@ -22,8 +22,9 @@ Source2:    brasero_create_data_project_from_blank_medium.desktop
 Source3:    brasero_create_audio_cd_from_blank_medium.desktop
 Patch0:		brasero-3.1.90-fix-str-fmt.patch
 
-BuildRequires:  intltool >= 0.35.0
+BuildRequires:  intltool
 BuildRequires:  gnome-doc-utils
+BuildRequires:  glib2.0-common
 BuildRequires:  imagemagick
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28.0
