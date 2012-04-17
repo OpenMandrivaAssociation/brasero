@@ -38,6 +38,7 @@ BuildRequires:	pkgconfig(gstreamer-plugins-base-0.10) >= 0.10.0
 BuildRequires:	pkgconfig(gthread-2.0) >= 2.6.0
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0.0
 BuildRequires:	pkgconfig(ice)
+BuildRequires:	tracker-devel
 BuildRequires:	pkgconfig(libburn-1) >= 0.4.0
 BuildRequires:	pkgconfig(libcanberra) >= 0.1
 BuildRequires:	pkgconfig(libcanberra-gtk3) >= 0.1
