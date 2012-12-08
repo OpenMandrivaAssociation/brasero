@@ -1,5 +1,3 @@
 sources:
-  "brasero-3.4.1.tar.xz:"	ca636f3d2e8f4795a0794cd2a0ce3ded840e2a02
-  "brasero_copy_disc.desktop:"	f65b84e4c15e8e4980b09231bdd66f5beb9154c2
-  "brasero_create_audio_cd_from_blank_medium.desktop:"	e8977b64190fa681103ebb07cb3e8da066f2d6b8
-  "brasero_create_data_project_from_blank_medium.desktop:"	2843779d13965331eaa2b808ee9d6d8a5a72aa18
+  brasero-3.6.0.tar.xz: a4447c641039017c9961cf7aaa1b0b7c9516d245
+---
