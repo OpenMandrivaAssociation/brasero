@@ -1,22 +1,22 @@
-%define major		1
-%define api		3
-%define gi_major	%{version}
+%define major 1
+%define api 3
+%define gi_major %{version}
 
-%define libnameburn3	%mklibname %{name}-burn %{api} %{major}
-%define libnamemedia3	%mklibname %{name}-media %{api} %{major}
-%define libnameutils3	%mklibname %{name}-utils %{api} %{major}
+%define libnameburn3 %mklibname %{name}-burn %{api} %{major}
+%define libnamemedia3 %mklibname %{name}-media %{api} %{major}
+%define libnameutils3 %mklibname %{name}-utils %{api} %{major}
 
-%define girmedia	%mklibname %{name}-media-gir %{gi_major}
-%define girburn		%mklibname %{name}-burn-gir %{gi_major}
+%define girmedia %mklibname %{name}-media-gir %{gi_major}
+%define girburn %mklibname %{name}-burn-gir %{gi_major}
 
-%define develname	%mklibname -d %{name}
+%define develname %mklibname -d %{name}
 
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
 
 Name:		brasero
 Summary:	A disc burning application for GNOME
 Version:	3.6.1
-Release:	1
+Release:	2
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources//%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 Source1:	brasero_copy_disc.desktop
 Source2:	brasero_create_data_project_from_blank_medium.desktop
