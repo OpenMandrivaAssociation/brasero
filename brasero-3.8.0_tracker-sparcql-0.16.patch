@@ -1,0 +1,22 @@
+--- brasero-3.8.0/configure.ac~	2013-03-26 02:45:03.000000000 +0000
++++ brasero-3.8.0/configure.ac	2013-06-25 15:36:30.913542631 +0000
+@@ -383,7 +383,7 @@
+ 			[enable_search="auto"])
+ 
+ if test x"$enable_search" = "xauto"; then
+-        PKG_CHECK_EXISTS([tracker-sparql-0.14 >= $TRACKER_REQUIRED],
++        PKG_CHECK_EXISTS([tracker-sparql-0.16 >= $TRACKER_REQUIRED],
+                           [enable_search=yes],
+                           [PKG_CHECK_EXISTS([tracker-sparql-0.12 >= $TRACKER_REQUIRED],
+                                             [enable_search=yes],
+@@ -393,8 +393,8 @@
+ fi
+ 
+ if test x"$enable_search" = "xyes"; then
+-        PKG_CHECK_EXISTS([tracker-sparql-0.14 >= $TRACKER_REQUIRED],
+-                         [tracker_api=0.14],
++        PKG_CHECK_EXISTS([tracker-sparql-0.16 >= $TRACKER_REQUIRED],
++                         [tracker_api=0.16],
+                          [PKG_CHECK_EXISTS([tracker-sparql-0.12 >= $TRACKER_REQUIRED],
+                                            [tracker_api=0.12], [tracker_api=0.10])])
+ 	PKG_CHECK_MODULES(BRASERO_SEARCH, tracker-sparql-$tracker_api >= $TRACKER_REQUIRED)

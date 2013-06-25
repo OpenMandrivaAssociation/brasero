@@ -13,8 +13,8 @@
 
 Summary:	A disc burning application for GNOME
 Name:		brasero
-Version:	3.6.1
-Release:	3
+Version:	3.8.0
+Release:	1
 License:	GPLv2+
 Group:		Archiving/Cd burning
 Url:		http://www.gnome.org/projects/brasero/
@@ -22,6 +22,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{url_ver}/%{name}-%{ver
 Source1:	brasero_copy_disc.desktop
 Source2:	brasero_create_data_project_from_blank_medium.desktop
 Source3:	brasero_create_audio_cd_from_blank_medium.desktop
+Patch0:		brasero-3.8.0_tracker-sparcql-0.16.patch
 
 BuildRequires:	gnome-common
 BuildRequires:	gtk-doc
@@ -29,7 +30,6 @@ BuildRequires:	glib2.0-common
 BuildRequires:	imagemagick
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	itstool
-BuildRequires:	tracker
 BuildRequires:	gettext-devel
 BuildRequires:	tracker-devel
 BuildRequires:	pkgconfig(glib-2.0) >= 2.28.0
@@ -133,6 +133,7 @@ cdrkit or libburn / libisofs as the writing backend.
 %prep
 %setup -q
 %apply_patches
+autoreconf -fi
 
 %build
 %configure2_5x \
