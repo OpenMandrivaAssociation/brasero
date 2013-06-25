@@ -29,6 +29,7 @@ BuildRequires:	glib2.0-common
 BuildRequires:	imagemagick
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	itstool
+BuildRequires:	tracker
 BuildRequires:	gettext-devel
 BuildRequires:	tracker-devel
 BuildRequires:	pkgconfig(glib-2.0) >= 2.28.0
