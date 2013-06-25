@@ -23,6 +23,7 @@ Source1:	brasero_copy_disc.desktop
 Source2:	brasero_create_data_project_from_blank_medium.desktop
 Source3:	brasero_create_audio_cd_from_blank_medium.desktop
 Patch0:		brasero-3.8.0_tracker-sparcql-0.16.patch
+Patch1:		brasero-po.patch
 
 BuildRequires:	gnome-common
 BuildRequires:	gtk-doc
@@ -32,6 +33,7 @@ BuildRequires:	intltool >= 0.35.0
 BuildRequires:	itstool
 BuildRequires:	gettext-devel
 BuildRequires:	tracker-devel
+BuildRequires:	yelp-tools
 BuildRequires:	pkgconfig(glib-2.0) >= 2.28.0
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gobject-introspection-1.0) >= 0.6.3

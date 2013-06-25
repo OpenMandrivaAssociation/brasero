@@ -1,0 +1,11 @@
+--- brasero-3.8.0/po/kn.po~	2013-03-26 03:43:52.000000000 +0100
++++ brasero-3.8.0/po/kn.po	2013-05-25 13:12:03.337703330 +0200
+@@ -33,7 +33,7 @@
+ 
+ #: ../data/brasero.desktop.in.in.h:4
+ msgid "disc;cdrom;dvd;burn;audio;video;"
+-msgstr "ಡಿಸ್ಕ್;cdrom;dvd;ಬರೆ;ಆಡಿಯೊ;ವೀಡಿಯೊ"
++msgstr "ಡಿಸ್ಕ್;cdrom;dvd;ಬರೆ;ಆಡಿಯೊ;ವೀಡಿಯೊ;"
+ 
+ #: ../data/brasero.desktop.in.in.h:5
+ msgid "Brasero Disc Burner"
