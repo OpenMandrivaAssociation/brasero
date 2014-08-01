@@ -3,7 +3,7 @@
 %define gstapi	1.0
 %define major	1
 %define api	3
-%define gimajor 3.6.0
+%define gimajor 3.1
 %define libnameburn	%mklibname %{name}-burn %{api} %{major}
 %define libnamemedia	%mklibname %{name}-media %{api} %{major}
 %define libnameutils	%mklibname %{name}-utils %{api} %{major}
@@ -13,8 +13,8 @@
 
 Summary:	A disc burning application for GNOME
 Name:		brasero
-Version:	3.8.0
-Release:	5
+Version:	3.11.3
+Release:	1
 License:	GPLv2+
 Group:		Archiving/Cd burning
 Url:		http://www.gnome.org/projects/brasero/
