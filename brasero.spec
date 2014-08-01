@@ -22,7 +22,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{url_ver}/%{name}-%{ver
 Source1:	brasero_copy_disc.desktop
 Source2:	brasero_create_data_project_from_blank_medium.desktop
 Source3:	brasero_create_audio_cd_from_blank_medium.desktop
-Patch0:		brasero-3.8.0_tracker-sparcql-0.16.patch
+Patch0:		support_tracker_1.0_API.diff
 Patch1:		brasero-po.patch
 
 BuildRequires:	gnome-common
