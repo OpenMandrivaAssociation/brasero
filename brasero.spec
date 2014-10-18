@@ -13,7 +13,7 @@
 
 Summary:	A disc burning application for GNOME
 Name:		brasero
-Version:	3.11.3
+Version:	3.11.4
 Release:	1
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -22,8 +22,6 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/%{url_ver}/%{name}-%{ver
 Source1:	brasero_copy_disc.desktop
 Source2:	brasero_create_data_project_from_blank_medium.desktop
 Source3:	brasero_create_audio_cd_from_blank_medium.desktop
-Patch0:		support_tracker_1.0_API.diff
-Patch1:		brasero-po.patch
 
 BuildRequires:	gnome-common
 BuildRequires:	gtk-doc
@@ -135,10 +133,9 @@ cdrkit or libburn / libisofs as the writing backend.
 %prep
 %setup -q
 %apply_patches
-autoreconf -fi
 
 %build
-%configure2_5x \
+%configure \
         --enable-nautilus \
         --enable-libburnia \
         --enable-search \
@@ -146,7 +143,7 @@ autoreconf -fi
         --enable-preview \
         --enable-inotify \
         --disable-caches \
-        --disable-static
+	--enable-compile-warnings=no
 
 %make 
 
@@ -169,6 +166,7 @@ install -D -m 644 %{SOURCE3} %{buildroot}%{_datadir}/apps/solid/actions/
 %{_libdir}/%{name}%{api}
 %{_libdir}/nautilus/extensions-3.0/libnautilus-brasero-extension.*
 %{_datadir}/applications/*
+%{_datadir}/appdata/*
 %{_datadir}/%{name}
 %{_datadir}/apps/solid/actions/*
 %{_datadir}/glib-2.0/schemas/org.gnome.brasero.gschema.xml
