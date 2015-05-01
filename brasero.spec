@@ -13,7 +13,7 @@
 
 Summary:	A disc burning application for GNOME
 Name:		brasero
-Version:	3.12.0
+Version:	 3.12.1
 Release:	2
 License:	GPLv2+
 Group:		Archiving/Cd burning
@@ -145,7 +145,7 @@ cdrkit or libburn / libisofs as the writing backend.
         --disable-caches \
 	--enable-compile-warnings=no
 
-%make 
+%make
 
 %install
 %makeinstall_std
