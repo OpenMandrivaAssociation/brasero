@@ -132,7 +132,7 @@ cdrkit or libburn / libisofs as the writing backend.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 %configure \
