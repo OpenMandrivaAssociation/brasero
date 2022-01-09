@@ -1,8 +1,2 @@
-removed_sources:
-  brasero-3.11.3.tar.xz: 8b7a10daed32cc0aec473eb6ba1d20ad2f10dfb8
-  brasero-3.11.4.tar.xz: ebbeb3f5158eeeddefe9ae8ca2815eae8cffd40f
-  brasero-3.12.0.tar.xz: 2dd4ec27f755f19120f36418f711e1901f6fdd0c
-  brasero-3.6.1.tar.xz: fda637ad6dd6013e197d3977a970368495fec32c
 sources:
-  brasero-3.12.1.tar.xz: 288beac80fb1348b9919434ab615c846e89c7149
-  brasero-3.12.2.tar.xz: 2f3677c2aafa1c6a832befe45e0aeb25f9f95089
+  brasero-3.12.3.tar.xz: 44494136c44b2d3b1608034ac22a6513b7e6e15f
