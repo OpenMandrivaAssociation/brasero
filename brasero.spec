@@ -13,8 +13,8 @@
 
 Summary:	A disc burning application for GNOME
 Name:		brasero
-Version:	3.12.2
-Release:	2
+Version:	3.12.3
+Release:	1
 License:	GPLv2+
 Group:		Archiving/Cd burning
 Url:		http://www.gnome.org/projects/brasero/
@@ -166,7 +166,7 @@ install -D -m 644 %{SOURCE3} %{buildroot}%{_datadir}/apps/solid/actions/
 %{_libdir}/%{name}%{api}
 %{_libdir}/nautilus/extensions-3.0/libnautilus-brasero-extension.*
 %{_datadir}/applications/*
-%{_datadir}/appdata/*
+%{_datadir}/metainfo/brasero.appdata.xml
 %{_datadir}/%{name}
 %{_datadir}/apps/solid/actions/*
 %{_datadir}/glib-2.0/schemas/org.gnome.brasero.gschema.xml
