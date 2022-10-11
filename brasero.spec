@@ -164,7 +164,7 @@ install -D -m 644 %{SOURCE3} %{buildroot}%{_datadir}/apps/solid/actions/
 %doc AUTHORS MAINTAINERS NEWS README
 %{_bindir}/%{name}
 %{_libdir}/%{name}%{api}
-%{_libdir}/nautilus/extensions-3.0/libnautilus-brasero-extension.*
+#{_libdir}/nautilus/extensions-3.0/libnautilus-brasero-extension.*
 %{_datadir}/applications/*
 %{_datadir}/metainfo/brasero.appdata.xml
 %{_datadir}/%{name}
