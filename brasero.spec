@@ -14,7 +14,7 @@
 Summary:	A disc burning application for GNOME
 Name:		brasero
 Version:	3.12.3
-Release:	5
+Release:	6
 License:	GPLv2+
 Group:		Archiving/Cd burning
 Url:		http://www.gnome.org/projects/brasero/
@@ -44,7 +44,7 @@ BuildRequires:	pkgconfig(libburn-1) >= 0.4.0
 BuildRequires:	pkgconfig(libcanberra) >= 0.1
 BuildRequires:	pkgconfig(libcanberra-gtk3) >= 0.1
 BuildRequires:	pkgconfig(libisofs-1) >= 0.6.4
-BuildRequires:	pkgconfig(libnautilus-extension) >= 2.91.90
+#BuildRequires:	pkgconfig(libnautilus-extension) >= 2.91.90
 BuildRequires:	pkgconfig(libnotify) >= 0.6.1
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.6.0
 BuildRequires:	pkgconfig(sm)
