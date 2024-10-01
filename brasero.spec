@@ -14,7 +14,7 @@
 Summary:	A disc burning application for GNOME
 Name:		brasero
 Version:	3.12.3
-Release:	9
+Release:	10
 License:	GPLv2+
 Group:		Archiving/Cd burning
 Url:		https://www.gnome.org/projects/brasero/
@@ -30,7 +30,7 @@ BuildRequires:	imagemagick
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	itstool
 BuildRequires:	gettext-devel
-BuildRequires:	tracker-devel
+BuildRequires:	pkgconfig(tinysparql-3.0)
 BuildRequires:	yelp-tools
 BuildRequires:	pkgconfig(glib-2.0) >= 2.28.0
 BuildRequires:	pkgconfig(gnome-doc-utils)
@@ -145,10 +145,10 @@ cdrkit or libburn / libisofs as the writing backend.
         --disable-caches \
 	--enable-compile-warnings=no
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 sed -i 's/cd:x/cd;x/' %{buildroot}%{_datadir}/applications/%{name}.desktop
 
