@@ -14,7 +14,7 @@
 Summary:	A disc burning application for GNOME
 Name:		brasero
 Version:	3.12.3
-Release:	11
+Release:	12
 License:	GPLv2+
 Group:		Archiving/Cd burning
 Url:		https://www.gnome.org/projects/brasero/
