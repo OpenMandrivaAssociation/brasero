@@ -23,6 +23,11 @@ Source1:	brasero_copy_disc.desktop
 Source2:	brasero_create_data_project_from_blank_medium.desktop
 Source3:	brasero_create_audio_cd_from_blank_medium.desktop
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gnome-common
 BuildRequires:	gtk-doc
 BuildRequires:	glib2.0-common
