@@ -1,0 +1,15 @@
+slibtoolize only installs slibtool.m4 when configure.ac names a macro
+directory. Without that, aclocal keeps GNU libtool's LT_INIT and the
+stub ltmain.sh from slibtoolize, and the build does not use slibtool.
+
+diff -Naur a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -49,6 +49,7 @@
+ AC_CONFIG_HEADERS([config.h])
+ 
+ AC_DISABLE_STATIC
++AC_CONFIG_MACRO_DIR([m4])
+ LT_INIT
+ 
+ AM_MAINTAINER_MODE([enable])

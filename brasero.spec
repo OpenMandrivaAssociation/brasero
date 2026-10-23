@@ -22,6 +22,7 @@ Source0:	https://ftp.gnome.org/pub/GNOME/sources/brasero/%{url_ver}/%{name}-%{ve
 Source1:	brasero_copy_disc.desktop
 Source2:	brasero_create_data_project_from_blank_medium.desktop
 Source3:	brasero_create_audio_cd_from_blank_medium.desktop
+Patch0:		brasero-m4dir.patch
 
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -140,6 +141,12 @@ cdrkit or libburn / libisofs as the writing backend.
 %autopatch -p1
 
 %build
+# 3.12.4 ships configure.ac without the generated bootstrap files.
+mkdir -p m4
+gtkdocize --copy
+intltoolize --force --copy --automake
+autoheader
+
 %configure \
         --enable-nautilus \
         --enable-libburnia \
@@ -147,6 +154,7 @@ cdrkit or libburn / libisofs as the writing backend.
         --enable-playlist \
         --enable-preview \
         --enable-inotify \
+        --enable-gtk-doc \
         --disable-caches \
 	--enable-compile-warnings=no
 
@@ -171,7 +179,7 @@ install -D -m 644 %{SOURCE3} %{buildroot}%{_datadir}/apps/solid/actions/
 %{_libdir}/%{name}%{api}
 #{_libdir}/nautilus/extensions-3.0/libnautilus-brasero-extension.*
 %{_datadir}/applications/*
-%{_datadir}/metainfo/brasero.appdata.xml
+%{_datadir}/metainfo/org.gnome.Brasero.metainfo.xml
 %{_datadir}/%{name}
 %{_datadir}/apps/solid/actions/*
 %{_datadir}/glib-2.0/schemas/org.gnome.brasero.gschema.xml
